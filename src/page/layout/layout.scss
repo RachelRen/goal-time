@@ -1,0 +1,12 @@
+.app-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    .nav-list {
+        display: flex;
+
+        .nav-list-item {
+            flex: 1;
+        }
+    }
+}

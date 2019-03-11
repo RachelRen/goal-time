@@ -1,0 +1,59 @@
+@import "var.scss";
+%table{
+	width: 100%;
+	letter-spacing: 0;
+	border-collapse: collapse;
+	background: #fff;
+	text-align: left;
+	table-layout: fixed;
+	th{
+		font-weight: normal;
+		background: $tableEvenColor;
+		height: 50px;
+		box-sizing: border-box;
+		padding: 0 10px;
+		text-align: left;
+		border-bottom: 1px solid $tableBorderColor;
+		border-top: 1px solid $tableBorderColor;
+	}
+	td{
+		padding: 0 10px;
+		height: 50px;
+		box-sizing: border-box;
+		border-bottom: 1px solid $tableBorderColor;
+		&.f-tr{
+			padding-right: 50px;
+		}
+	}
+	
+	
+	tr:nth-of-type(even){
+		td{
+			background: $tableEvenColor;
+		}
+	}
+	tr{
+		&:hover, &.selectedLine{
+			td{
+				background: $tableSelectedColor;
+			}
+		}
+	}
+	.f-ellipsis {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		word-break: break-all;
+		white-space: nowrap;
+		display: block;
+	}
+	.linkName{
+		color: $baseLinkColor;
+		cursor: pointer;
+	}
+	.linkArea{
+		color: $baseLinkColor;
+		cursor: pointer;
+		width: 100%;
+		display: inline-block;
+	}
+}

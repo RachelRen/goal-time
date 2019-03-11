@@ -1,0 +1,42 @@
+@import "normalize.scss";
+@import "base.scss";
+@import "form.scss";
+@import "../icons/iconfont.css";
+
+ul, li{
+    list-style: none;
+}
+.hide {
+    display: none;
+}
+
+body, html{
+    height: 100%;;
+}
+
+.iconfont{
+    font-size: 28px;
+    color: #999;
+}
+.g-app {
+    background: rgb(233, 231, 232);
+    height: 100%;
+}
+
+.app-header {
+    background: url('../images/re.jpg') no-repeat;
+    height: 100px;
+    line-height: 100px;
+    color: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    font-size: 40px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.app-content {
+    padding-top: 100px;
+}

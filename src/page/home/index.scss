@@ -1,0 +1,75 @@
+.additem-container {
+    margin-top: 56px;
+    position: relative;
+    .additem-btn {
+        
+        border: none;
+        padding: 5px 30px;
+        border: 1px solid #406dae;
+        border-radius: 10px;
+        .iconfont{
+            font-size: 40px;
+            color: #aabee1;
+        }
+        
+        
+    }
+    .additem-line {
+        width: 100%;
+        border: 1px solid #ccc;
+        background: #fff;
+        padding: 16px;
+    }
+    .additem-label {
+        .iconfont {
+            font-size: 44px;
+        }
+        &::after{
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 52px;
+            background: #ccc;
+            vertical-align: middle;
+            margin: 0 40px;
+        }
+    }
+
+    .additem-icons-container {
+        margin-top: 25px;
+        background: #fff;
+        border-top: #c8c8c8;
+        padding: 30px;
+        .icons-title {
+            font-size: 20px;
+            font-weight: 400;
+            color: #333;
+        }
+        .icons-list {
+            padding: 0 20px;
+        }
+        .icons-item {
+            display: inline-block;
+            width: 105px;
+            height: 105px;
+            border: 6px solid transparent;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .icon-item-current {
+            background: #faf5f9;
+            border-color: #77a7d5;
+        }
+
+        .icons-link {
+            display: inline-block;
+            
+            width: 100%;
+            
+            .iconfont {
+                font-size: 70px;
+            }
+        }
+    }
+}
