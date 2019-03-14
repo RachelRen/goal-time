@@ -24,22 +24,22 @@ const config = {
         filename: './static/js/[name].js',
         path: path.join(__dirname, './static/build'),
     },
-    // devServer: {
-	   //  contentBase: path.join(__dirname, './static/build'),
-	   //  // publicPath: '/',
-	   //  historyApiFallback: true,
-	   //  inline: true,
-	   //  port: 3000,
-    //     host: '0.0.0.0',
-    //     proxy: {
-    //         '/api/*': {
-    //             target: "http://localhost:10234",
-    //             secure: false
-    //         }
-    //     },
-	   //  // disableHostCheck: true,
-	   //  hot: true,
-    // },
+    devServer: {
+        contentBase: path.join(__dirname, './static/build'),
+        // publicPath: '/',
+        historyApiFallback: true,
+        inline: true,
+        port: 3000,
+        host: '0.0.0.0',
+        proxy: {
+            '/api/*': {
+                target: "http://localhost:10234",
+                secure: false
+            }
+        },
+        // disableHostCheck: true,
+        hot: true,
+    },
     module: {
         rules: [/*{
             test: /\.tsx?$/,
@@ -59,50 +59,50 @@ const config = {
             exclude: /node_modules/,
             use: ['happypack/loader?id=babel'],
             /* use: {
-				loader: 'babel-loader',
-				options: {
-					presets: ["react", "env", "stage-2"],
-					//plugins: ["transform-runtime"]
-				}
-			}
+                loader: 'babel-loader',
+                options: {
+                    presets: ["react", "env", "stage-2"],
+                    //plugins: ["transform-runtime"]
+                }
+            }
         },*/ {
             test: /\.css?$/,
             use: [
                 'style-loader',
-          		'css-loader'
-          	],
+                'css-loader'
+            ],
         },{
             test: /\.scss?$/,
             use: [
                 'style-loader',
-          		'css-loader',
+                'css-loader',
                 'postcss-loader',
                 'sass-loader'
-          	],
+            ],
         }, {
             test: /\.(woff|svg|eot|ttf)\??.*$/,
-	        use: {
-	          	loader: 'url-loader',
-	        },
+            use: {
+                loader: 'url-loader',
+            },
         }, {
             test: /\.(png|gif|jpg|jpeg)$/,
-	        use: {
-	          	loader: 'url-loader',
-	          	options: {
-	            	name: './static/assets/images/[name].[ext]',
-	            	limit: 100,
-	          	},
-	        },
+            use: {
+                loader: 'url-loader',
+                options: {
+                    name: './static/assets/images/[name].[ext]',
+                    limit: 100,
+                },
+            },
         }],
     },
     optimization: {
-	    splitChunks: {
-	      	chunks: 'all',
-	     	name: 'common',
-	    },
-	    runtimeChunk: {
-	     	name: 'runtime',
-	    },
+        splitChunks: {
+            chunks: 'all',
+            name: 'common',
+        },
+        runtimeChunk: {
+            name: 'runtime',
+        },
     },
     resolve: {
         alias: {
@@ -134,9 +134,9 @@ const config = {
         }),
         // new BundleAnalyzerPlugin(),
         // new HappyPack({
-	    //   	id: 'babel',
-	    //   	loaders: ['babel-loader?cacheDirectory'],
-	    // }),
+        //      id: 'babel',
+        //      loaders: ['babel-loader?cacheDirectory'],
+        // }),
         new HtmlWebpackPlugin({
             template: './static/src/index.html',
             inject: true,
@@ -145,18 +145,18 @@ const config = {
             filename: 'index.html',
         }),
         new MiniCssExtractPlugin({
-	      	filename: '[name].css',
-	      	disable: true,
-	    }),
+            filename: '[name].css',
+            disable: true,
+        }),
         // new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true })
-	    // new DllReferencePlugin({
-	    // 	context: __dirname,
-	    //   	manifest: require('./build/vendor.manifest.json'),
-	    // }),
-	    // new DllReferencePlugin({
-	    // 	context: __dirname,
-	    //   	manifest: require('./build/polyfill.manifest.json'),
-	    // }),
+        // new DllReferencePlugin({
+        //  context: __dirname,
+        //      manifest: require('./build/vendor.manifest.json'),
+        // }),
+        // new DllReferencePlugin({
+        //  context: __dirname,
+        //      manifest: require('./build/polyfill.manifest.json'),
+        // }),
     ],
 };
 module.exports = config;

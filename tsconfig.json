@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./build/",
+        "outDir": "./static/build/",
         "sourceMap": true,
         "noImplicitAny": true,
         // "module": "es2015",
@@ -8,13 +8,13 @@
         "jsx": "react",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "baseUrl": "./",
+        "baseUrl": "./static/",
         "paths": {
-            "Page": ["src/page"],
+            "Page": ["./static/src/page"],
         },
     },
     
     "include": [
-        "./src/**/*"
+        "./static/src/**/*"
     ]
 }
