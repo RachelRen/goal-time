@@ -24,22 +24,22 @@ const config = {
         filename: './static/js/[name].js',
         path: path.join(__dirname, './static/build'),
     },
-    // devServer: {
-	   //  contentBase: path.join(__dirname, './static/build'),
-	   //  // publicPath: '/',
-	   //  historyApiFallback: true,
-	   //  inline: true,
-	   //  port: 3000,
-    //     host: '0.0.0.0',
-    //     proxy: {
-    //         '/api/*': {
-    //             target: "http://localhost:10234",
-    //             secure: false
-    //         }
-    //     },
-	   //  // disableHostCheck: true,
-	   //  hot: true,
-    // },
+    devServer: {
+	    contentBase: path.join(__dirname, './static/build'),
+	    // publicPath: '/',
+	    historyApiFallback: true,
+	    inline: true,
+	    port: 3000,
+        host: '0.0.0.0',
+        proxy: {
+            '/api/*': {
+                target: "http://localhost:10234",
+                secure: false
+            }
+        },
+	    // disableHostCheck: true,
+	    hot: true,
+    },
     module: {
         rules: [/*{
             test: /\.tsx?$/,

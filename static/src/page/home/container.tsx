@@ -19,12 +19,11 @@ function mapDispatchToProps(dispatch: any) {
             dispatch({type: 'FETCH_ICONS'});
         },
         addGoal: (name:string, id: string) => {
-            debugger;
             dispatch({
                 type: "ADD_GOAL",
                 payload: {
                     name,
-                    id
+                    iconId: id
                 }
             })
         }

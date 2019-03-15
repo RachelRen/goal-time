@@ -21,25 +21,10 @@ const config = {
         // vendor: ['react', 'react-dom','react-router', 'react-router-dom','react-router-config']
     },
     output: {
-        filename: './static/js/[name].js',
+        filename: './js/[name].js',
         path: path.join(__dirname, './static/build'),
     },
-    devServer: {
-        contentBase: path.join(__dirname, './static/build'),
-        // publicPath: '/',
-        historyApiFallback: true,
-        inline: true,
-        port: 3000,
-        host: '0.0.0.0',
-        proxy: {
-            '/api/*': {
-                target: "http://localhost:10234",
-                secure: false
-            }
-        },
-        // disableHostCheck: true,
-        hot: true,
-    },
+    
     module: {
         rules: [/*{
             test: /\.tsx?$/,
@@ -89,7 +74,7 @@ const config = {
             use: {
                 loader: 'url-loader',
                 options: {
-                    name: './static/assets/images/[name].[ext]',
+                    name: './assets/images/[name].[ext]',
                     limit: 100,
                 },
             },

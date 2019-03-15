@@ -17,13 +17,13 @@ export interface ItemProps {
 }
 class Home extends React.PureComponent<ItemProps, any>{
     public state: {
-        currentId: string,
+        currentIconId: string,
         goalname: string
     }
     constructor(props:ItemProps){
         super(props);
         this.state = {
-            currentId: "",
+            currentIconId: "",
             goalname: ""
         }
     }
@@ -38,16 +38,16 @@ class Home extends React.PureComponent<ItemProps, any>{
     }
     selectItem = (id:string) =>(e:any) => {
         this.setState({
-            currentId: id
+            currentIconId: id
         })
     }
     addGoal = () => {
-        const {goalname, currentId} = this.state;
-        this.props.addGoal(goalname, currentId)
+        const {goalname, currentIconId} = this.state;
+        this.props.addGoal(goalname, currentIconId)
     }
     render(){
         const {list} = this.props;
-        const {currentId, goalname} = this.state;
+        const {currentIconId, goalname} = this.state;
         return (
             
             <section className="additem-container">
@@ -65,7 +65,7 @@ class Home extends React.PureComponent<ItemProps, any>{
                         {list.map(item => 
                             <li className={classnames({
                                 "icons-item": true,
-                                "icon-item-current": item.id == currentId
+                                "icon-item-current": item.id == currentIconId
                             })} key={item.id} 
                             onClick={this.selectItem(item.id)}>
                                 <a className="icons-link" href="javascript:void(0)">

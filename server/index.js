@@ -14,7 +14,7 @@ app.use(views(path.join(__dirname, './views'), {
     extension: 'ejs'
 }))
 
-const staticPath = '../static';
+const staticPath = '../static/build';
 
 app.use(static(
     path.join(__dirname, staticPath)
