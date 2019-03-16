@@ -15,7 +15,9 @@
     "createBase": "node ./db/createBase.js",
     "demo": "node ./db/util/getcontent.js",
     "init": "node ./db/init2.js",
-    "getFile": "node ./db/getFile.js"
+    "getFile": "node ./db/getFile.js",
+    "init1": "node ./db/init3.js",
+    "icons": "node ./db/getIcon.js"
   },
   "dependencies": {
     "react": "^16.6.0",
