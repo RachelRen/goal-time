@@ -11,6 +11,9 @@ function getIcons(){
 	console.log("iconFile", iconFile);
 
 	const content = fs.readFileSync(iconFile, 'binary');
-	console.log("content", content);
+	var reg = /\.icon\-((\w)+?)\:before/gi;
+	const result = reg.exec(content);
+	// console.log("content", content);
+	console.log("result", result);
 }
 getIcons();
