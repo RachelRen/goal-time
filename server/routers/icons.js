@@ -1,11 +1,11 @@
 const router = require('koa-router')()
-const goals = require('../controllers/goals.js');
+const icons = require('../controllers/icons.js');
 
 
 
 
 
 const routers = router
-	.get( '/list', goals.getList )
+	.get( '/list', icons.getList )
 	
 module.exports = routers

@@ -15,7 +15,7 @@ export function* helloSaga() {
 
 function fetchIcons(){
     const list = fetchRequest({
-        url: "/api/common/icons"
+        url: "/api/icon/list"
     }).then((json:any) => {
         return json
     })

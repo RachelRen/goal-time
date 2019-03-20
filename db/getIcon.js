@@ -2,7 +2,6 @@ const fs = require('fs')
 
 function getIcons(){
 	let basePath = __dirname;
-	console.log("basePath 1", basePath);
 	basePath = basePath.replace(/\\/g, '\/');
 	let baseArr = basePath.split("\/");
 	baseArr.splice(baseArr.length -1, 1);
@@ -11,9 +10,13 @@ function getIcons(){
 	console.log("iconFile", iconFile);
 
 	const content = fs.readFileSync(iconFile, 'binary');
-	var reg = /\.icon\-((\w)+?)\:before/gi;
-	const result = reg.exec(content);
-	// console.log("content", content);
+	// var reg = /\.icon\-(\w+?)\:before/gmi;
+	var reg = /\icon\-\w+?(?=\:before)/gim;
+	const result = content.match(reg);
+	return result
+
 	console.log("result", result);
 }
-getIcons();
+
+module.exports = getIcons;
+

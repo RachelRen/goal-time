@@ -62,14 +62,14 @@ class Home extends React.PureComponent<ItemProps, any>{
                     <h2 className="icons-title">选择图标</h2>
                     <ul className="icons-list">
                         
-                        {list.map(item => 
+                        {list.map((item, index) => 
                             <li className={classnames({
                                 "icons-item": true,
                                 "icon-item-current": item.id == currentIconId
-                            })} key={item.id} 
+                            })} key={index} 
                             onClick={this.selectItem(item.id)}>
                                 <a className="icons-link" href="javascript:void(0)">
-                                    <i className={`iconfont ${item.type}`}></i>
+                                    <i className={`iconfont ${item}`}></i>
                                 </a>
                             </li>
                         )}

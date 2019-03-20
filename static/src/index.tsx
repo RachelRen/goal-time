@@ -3,7 +3,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { Provider } from 'react-redux';
-import {Route, Router, BrowserRouter, Switch} from 'react-router-dom';
+import {Route, Router, BrowserRouter, Switch, Link } from 'react-router-dom';
 
 import { store, history } from './redux/store/index';
 import { ConnectedRouter } from 'react-router-redux';
@@ -27,7 +27,21 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <div className="g-app">
-                <div className="app-header">header</div>
+                <div className="app-header"></div>
+                <div>
+                    <ul>
+                        <li>
+                            <Link to="/">list</Link >
+                        </li>
+                        <li>
+                            <Link to="/home">home</Link >
+                        </li>
+                        <li>
+                            <Link to="/summarylist">SummaryList</Link >
+                        </li>
+                        
+                    </ul>
+                </div>
                 <div className="app-content">
                     <Switch>
                         
