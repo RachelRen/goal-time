@@ -1,3 +1,5 @@
+export * from './punch';
+
 export const ADD:string = "ADD"
 export const REMOVE:string = "REMOVE"
 export const FETCH_ICONS:string = 'FETCH_ICONS'
@@ -26,3 +28,4 @@ export function receiveGoals(list: Array<any>){
 		payload: list
 	}
 }
+

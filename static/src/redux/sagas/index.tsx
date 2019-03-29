@@ -6,6 +6,7 @@ import {fetchRequest} from "../../util/ajax";
 import * as actions from '../actions';
 
 import {takeEveryList} from './list';
+import {addWatchPunch} from './punch';
 
 
 export function* helloSaga() {
@@ -58,5 +59,6 @@ export default function* rootSaga() {
     yield fork(watchAddGoal)
     yield fork(takeEveryGetIcons);
     yield fork(takeEveryList);
+    yield fork(addWatchPunch);
     yield helloSaga();
 }

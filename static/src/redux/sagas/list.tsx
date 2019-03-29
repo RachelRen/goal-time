@@ -21,7 +21,6 @@ function fetchIcons(){
 }
 
 function fetchGoals(){
-    debugger;
     const list = fetchRequest({
         url: "/api/goal/list",
         // data: params
@@ -32,7 +31,6 @@ function fetchGoals(){
 }
 
 export function* receiveGoals(){
-    debugger;
     const list = yield call(fetchGoals);
     yield put(actions.receiveGoals(list));
 }

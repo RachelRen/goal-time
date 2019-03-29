@@ -17,18 +17,6 @@ export default function goals(state : StateInit = {value: 0, list: []}, action: 
             return Object.assign({}, state, {
                 list: action.payload
             });
-        case 'ADD_PUNCHGOAL_SUCCESS':
-            // const goal = action.payload,
-            //     list = [...state.list];
-
-            // const index = list.findIndex(item => {
-            //     return item.id == goal.id;
-            // })
-            // list[index] = goal;
-            // debugger;
-            return Object.assign({}, state, {
-                punchGoal: action.payload
-            });
 
         default:
             return state

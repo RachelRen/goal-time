@@ -25,7 +25,8 @@ body, html{
 
 .app-header {
     background: url('../images/re.jpg') no-repeat;
-    height: 100px;
+    background-size: 100% 250px;
+    height: 250px;
     line-height: 100px;
     color: #fff;
     position: fixed;
@@ -38,5 +39,5 @@ body, html{
 }
 
 .app-content {
-    padding-top: 100px;
+    padding-top: 250px;
 }

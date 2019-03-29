@@ -7,9 +7,9 @@ import Home from './index';
 //export interface HomeProps { compiler: string; framework: string; }
 
 const mapStateToProps =(state: any) => {
-    debugger;
     return {
         list : state.goals.list,
+        punchGoal : state.goals.punchGoal
     }
 };
 
@@ -18,12 +18,10 @@ function mapDispatchToProps(dispatch: any) {
         getList : () => {
             dispatch({type: 'FETCH_GOALLIST'});
         },
-        addGoal: (name:string, id: string) => {
-            debugger;
+        punchclock: (id: string) => {
             dispatch({
-                type: "ADD_GOAL",
+                type: "ADD_PUNCH",
                 payload: {
-                    name,
                     id
                 }
             })

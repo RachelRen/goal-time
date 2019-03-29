@@ -2,7 +2,7 @@ import * as React from "react";
 import {connect} from "react-redux";
 
 
-import Home from './index';
+import AddGoal from './index';
 
 //export interface HomeProps { compiler: string; framework: string; }
 
@@ -32,4 +32,4 @@ function mapDispatchToProps(dispatch: any) {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(AddGoal)

@@ -7,7 +7,9 @@ import * as classnames from 'classnames';
 // import * as Button from 'antd/lib/button';
 // import Button from 'antd/lib/button';
 // import { Button } from 'antd-mobile';
-import { Button } from 'antd-mobile';
+import createHistory from 'history/createBrowserHistory'
+import { history } from '../../redux/store/index';
+import { Button, Checkbox, Toast } from 'antd-mobile';
 
 import "./index.scss";
 
@@ -16,42 +18,52 @@ export interface ItemProps {
     callback: () => void,
     getList: () => void,
     list: Array<any>,
-    addGoal: (name:string, id: string) => void
+    punchclock: (id: string) => void,
+    punchGoal: any
 }
 class Home extends React.PureComponent<ItemProps, any>{
     public state: {
         currentId: string,
-        goalname: string
+        goalname: string,
+        punchSuccess: boolean
+    }
+    static getDerivedStateFromProps(props: ItemProps, state: any){
+        return {
+            punchSuccess: !!props.punchGoal
+        }
     }
     constructor(props:ItemProps){
         super(props);
         this.state = {
             currentId: "",
-            goalname: ""
+            goalname: "",
+            punchSuccess: false
         }
     }
 
     componentDidMount(){
-        debugger;
         this.props.getList();
     }
-    inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            goalname: e.target.value
-        })
-    }
-    selectItem = (id:string) =>(e:any) => {
-        this.setState({
-            currentId: id
-        })
-    }
     addGoal = () => {
-        const {goalname, currentId} = this.state;
-        this.props.addGoal(goalname, currentId)
+        history.push('/add');
+    }
+    punchclock = (id:string) => (e:any) => {
+        this.props.punchclock(id);
     }
     render(){
-        const {list} = this.props;
-        const {currentId, goalname} = this.state;
+        const {list, punchGoal} = this.props,
+            {currentId, goalname} = this.state;
+            
+        if(punchGoal){
+            const index = list.findIndex(item => {
+                return item.id == punchGoal.id;
+            })
+            list[index] = punchGoal;  
+        }
+          
+        if(this.state.punchSuccess){
+            Toast.success('打卡成功');
+        }
         return (
             
             <section className="goal-list-container">
@@ -66,33 +78,27 @@ class Home extends React.PureComponent<ItemProps, any>{
                             <a href="javascript:void(0)" className="goal-add-link">
                                 打卡
                             </a>
-                            <Button>Button</Button>
                         </div>
                     </li>
                     {this.props.list.map(item =>
-                        <li className="goal-list-item">
+                        <li className="goal-list-item" key={item.id}>
                             <div className="item-header">
-                                <span>已经打卡次</span>
-                                <span></span>
+                                <span>已经打卡{item.count}次</span>
+                                <span>{item.updateTime}</span>
                             </div>
                             <div className="item-content">
                                 {item.name}
-                                <a href="javascript:void(0)" className="goal-add-link">
-                                    打卡
-                                </a>
-                                <Button>Button</Button>
+                                <Checkbox className="goal-add-link" onChange={this.punchclock(item.id)}>打卡</Checkbox>
                             </div>
                         </li>
                     )}
                 </ul>
                 <div>
-                    <Button type="primary" >增加新目标</Button>
+                    <Button type="primary" onClick={this.addGoal}>增加新目标</Button>
                 </div>
             </section>
         )
     }
 }
-
-//const Home = (props: HomeProps) => <h1>Hello from {props.compiler} and {props.framework}!</h1>;
 
 export default Home

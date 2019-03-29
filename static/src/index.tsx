@@ -13,10 +13,9 @@ import { renderRoutes } from 'react-router-config';
 
 import './assets/sass/style.scss';
 //import 'antd-mobile/dist/antd-mobile.css';
-import Home from './page/home/container'
+import AddGoal from './page/addgoal/container'
 import List from './page/list/container'
 import SummaryList from './page/summary/list/container'
-
 
 
 import Footer from './page/layout/footer'
@@ -25,28 +24,13 @@ import App from './page/test';
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <Router history={history}>
             <div className="g-app">
                 <div className="app-header"></div>
-                <div>
-                    <ul>
-                        <li>
-                            <Link to="/">list</Link >
-                        </li>
-                        <li>
-                            <Link to="/home">home</Link >
-                        </li>
-                        <li>
-                            <Link to="/summarylist">SummaryList</Link >
-                        </li>
-                        
-                    </ul>
-                </div>
                 <div className="app-content">
                     <Switch>
-                        
                         <Route path="/" exact component={List}/>
-                        <Route path="/home" exact component={Home}/>
+                        <Route path="/add" exact component={AddGoal}/>
                         <Route path="/summarylist" exact component={SummaryList}/>
                             
                     </Switch>
@@ -54,8 +38,7 @@ ReactDOM.render(
                 <Footer />
                 
             </div>
-            
-        </BrowserRouter>
+        </Router>
     </Provider>
     
     ,

@@ -5,6 +5,7 @@ const app = express();
 const Common = require('./common');
 const Goal = require('./goal');
 const Icon = require('./icon');
+const Punch = require('./punch');
 
 // 全部允许跨域请求
 app.all('*', (req, res, next) => {
@@ -23,6 +24,7 @@ app.all('*', (req, res, next) => {
 app.use('/api/common', Common);
 app.use('/api/goal', Goal);
 app.use('/api/icon', Icon);
+app.use('/api/punch', Punch);
 var server = app.listen(10234, () => {
     const host = server.address().address;
     const port = server.address().port;

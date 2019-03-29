@@ -15,7 +15,7 @@ export interface ItemProps {
     list: Array<any>,
     addGoal: (name:string, id: string) => void
 }
-class Home extends React.PureComponent<ItemProps, any>{
+class AddGoal extends React.PureComponent<ItemProps, any>{
     public state: {
         currentIconId: string,
         goalname: string
@@ -85,4 +85,4 @@ class Home extends React.PureComponent<ItemProps, any>{
 
 
 
-export default Home
+export default AddGoal
