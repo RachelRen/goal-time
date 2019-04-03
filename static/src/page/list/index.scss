@@ -30,6 +30,11 @@
             padding: 0 22px;
             line-height: 51px;
             font-size: 28px;
+            position: relative;
+        }
+        .item-time {
+            position: absolute;
+            right: 22px;
         }
         .item-content {
             position: relative;
@@ -49,7 +54,9 @@
         }
         .iconfont {
             font-size: 40px;
-            color: #fff;
+            color: #83bcf5;
+            display: inline-block;
+            margin-right: 16px;
         }
     }
 

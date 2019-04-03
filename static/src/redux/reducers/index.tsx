@@ -17,6 +17,14 @@ export default function iconfonts(state : StateInit = {value: 0, list: []}, acti
             return Object.assign({}, state, {
                 list: action.payload
             });
+        case 'ADD_GOAL_SUCCESS':
+            debugger;
+            return Object.assign({}, state, {
+                addedGoal: {
+                    status: "success",
+                    goal: action.payload
+                }
+            });
 
         default:
             return state

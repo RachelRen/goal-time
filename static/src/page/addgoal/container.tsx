@@ -10,6 +10,7 @@ const mapStateToProps =(state: any) => {
     
     return {
         list : state.iconfonts.list,
+        addedGoal: state.iconfonts.addedGoal,
     }
 };
 
@@ -23,7 +24,7 @@ function mapDispatchToProps(dispatch: any) {
                 type: "ADD_GOAL",
                 payload: {
                     name,
-                    iconId: id
+                    iconName: id
                 }
             })
         }

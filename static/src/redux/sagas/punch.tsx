@@ -11,7 +11,8 @@ import * as actions from '../actions';
 function postPunch(params:any){
     const goal = fetchRequest({
         url: "/api/punch/add",
-        data: params
+        data: params,
+        method: "POST"
     }).then((json:any) => {
         return json
     })

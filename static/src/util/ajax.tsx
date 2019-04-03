@@ -31,7 +31,7 @@ function fetchRequest(params:any):any {
         params.url = formatGetParams(params.url, params.data)
         params.data = undefined
     }
-    if (/post|put/.test(params.method)) {
+    if (/post|put/i.test(params.method)) {
         params.headers = params.headers || { 'Content-Type': 'application/json' };
         params.data = JSON.stringify(params.data || {});
     }

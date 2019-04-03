@@ -71,10 +71,11 @@ class Home extends React.PureComponent<ItemProps, any>{
                     <li className="goal-list-item">
                         <div className="item-header">
                             <span>已经打卡3次</span>
-                            <span>从2018年03月04日开始</span>
+                            <span className="item-time">从2018年03月04日开始</span>
                         </div>
                         <div className="item-content">
-                            测试
+                            
+                            <i className={`iconfont icon-devicestatus`}></i>测试
                             <a href="javascript:void(0)" className="goal-add-link">
                                 打卡
                             </a>
@@ -83,12 +84,12 @@ class Home extends React.PureComponent<ItemProps, any>{
                     {this.props.list.map(item =>
                         <li className="goal-list-item" key={item.id}>
                             <div className="item-header">
-                                <span>已经打卡{item.count}次</span>
-                                <span>{item.updateTime}</span>
+                                <span>已经打卡{item.count || 0}次</span>
+                                <span className="item-time">{item.last_timeStr || item.create_timeStr}</span>
                             </div>
                             <div className="item-content">
-                                {item.name}
-                                <Checkbox className="goal-add-link" onChange={this.punchclock(item.id)}>打卡</Checkbox>
+                                <i className={`iconfont ${item.iconName}`}></i>{item.name}
+                                <a href="javascript:void(0)" className="goal-add-link" onClick={this.punchclock(item.id)}>打卡</a>
                             </div>
                         </li>
                     )}
@@ -98,6 +99,12 @@ class Home extends React.PureComponent<ItemProps, any>{
                 </div>
             </section>
         )
+    }
+
+    componentDidUpdate(){
+        this.setState({
+            punchSuccess: false
+        })
     }
 }
 

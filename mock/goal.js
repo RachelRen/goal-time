@@ -21,11 +21,15 @@ Goal.get('/list', (req, res) => {
     });
 });
 
-Goal.get('/add', (req, res) => {
+Goal.post('/add', (req, res) => {
     res.send({
         code: 200,
         msg: 'success',
-        data: {},
+        data: {
+            id: "4",
+            type: "icon-learning",
+            name: "跑步4343"
+        },
     });
 });
 

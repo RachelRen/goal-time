@@ -5,6 +5,7 @@ import * as classnames from 'classnames';
 //import Button from 'antd/lib/button';
 //import { Button } from 'antd-mobile';
 import * as Button from 'antd/lib/button';
+import { history } from '../../redux/store/index';
 import "./index.scss";
 
 
@@ -12,19 +13,31 @@ import "./index.scss";
 export interface ItemProps {
     callback: () => void,
     getList: () => void,
+    addedGoal: any,
     list: Array<any>,
     addGoal: (name:string, id: string) => void
 }
 class AddGoal extends React.PureComponent<ItemProps, any>{
     public state: {
         currentIconId: string,
-        goalname: string
+        goalname: string,
+        addedGoal: any
+    }
+    static getDerivedStateFromProps(props: ItemProps, state: any){
+        if(props.addedGoal && props.addedGoal.status == "success"){
+            history.push('/');
+        }
+        return {
+            // punchSuccess: !!props.punchGoal,
+            addedGoal: props.addedGoal
+        }
     }
     constructor(props:ItemProps){
         super(props);
         this.state = {
             currentIconId: "",
-            goalname: ""
+            goalname: "",
+            addedGoal: {}
         }
     }
 
@@ -43,11 +56,12 @@ class AddGoal extends React.PureComponent<ItemProps, any>{
     }
     addGoal = () => {
         const {goalname, currentIconId} = this.state;
-        this.props.addGoal(goalname, currentIconId)
+        this.props.addGoal(goalname, currentIconId);
     }
     render(){
-        const {list} = this.props;
-        const {currentIconId, goalname} = this.state;
+        const {list} = this.props,
+            {currentIconId, goalname} = this.state;
+
         return (
             
             <section className="additem-container">
@@ -60,24 +74,30 @@ class AddGoal extends React.PureComponent<ItemProps, any>{
                 </div>
                 <div className="additem-icons-container">
                     <h2 className="icons-title">选择图标</h2>
-                    <ul className="icons-list">
-                        
-                        {list.map((item, index) => 
-                            <li className={classnames({
-                                "icons-item": true,
-                                "icon-item-current": item.id == currentIconId
-                            })} key={index} 
-                            onClick={this.selectItem(item.id)}>
-                                <a className="icons-link" href="javascript:void(0)">
-                                    <i className={`iconfont ${item}`}></i>
-                                </a>
-                            </li>
-                        )}
-                    </ul>
+                    <div className="additem-icons-list">
+                        <ul className="icons-list">
+                            
+                            {list.map((item, index) => 
+                                <li className={classnames({
+                                    "icons-item": true,
+                                    "icon-item-current": item == currentIconId
+                                })} key={index} 
+                                onClick={this.selectItem(item)}>
+                                    <a className="icons-link" href="javascript:void(0)">
+                                        <i className={`iconfont ${item}`}></i>
+                                    </a>
+                                </li>
+                            )}
+                        </ul>
+                    </div>
                 </div>
-                <a className="additem-btn" onClick={this.addGoal}>
-                    <i className="iconfont icon-bt_duigou_B"></i>
-                </a>
+                
+                <div className="additem-btn-container">
+                    <a className="additem-btn" onClick={this.addGoal}>
+                        确定添加目标
+                    </a>
+                </div>
+                
             </section>
         )
     }

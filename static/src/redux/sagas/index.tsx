@@ -27,7 +27,8 @@ function postGoal(params:any){
     
     const list = fetchRequest({
         url: "/api/goal/add",
-        data: params
+        data: params,
+        method: "POST"
     }).then((json:any) => {
         return json
     })
@@ -48,7 +49,8 @@ export function* takeEveryGetIcons(){
 export function* watchAddGoal() {    
     while (true) {
       const {payload} = yield take("ADD_GOAL")
-      yield call(postGoal, payload)
+      const addedGoal = yield call(postGoal, payload);
+       yield put(actions.addGoalBack(addedGoal));
     }
 }
 
